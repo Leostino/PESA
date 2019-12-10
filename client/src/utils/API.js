@@ -36,10 +36,13 @@ export default {
 
   // query job api for jobs
 
-  search: function(title,location) {
+  search: function(search) {
 
-    // let url = "http://api.indeed.com/ads/apisearch?publisher="+publisheId+"&q="+title+"&l=austin%2C+tx&sort=&radius=&st=&jt=&start=&limit=&fromage=&filter=&latlong=1&co=us&chnl=&userip=1.2.3.4&useragent=Mozilla/%2F4.0%28Firefox%29&v=2"
-    // return axios.get()
+    const api_key = "72423555f215d5d8c1fbe985a57e35bd"
+
+    const endPoint = "https://authenticjobs.com/api/?api_key="+ api_key +"&method=aj.jobs.search&keywords="+ search +"&perpage=3&format=json"
+
+    return axios.get(endPoint)
   }
   
 };

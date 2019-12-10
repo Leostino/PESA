@@ -38,6 +38,11 @@ code {
   background-color: #989898;
 }
 
+#job-page {
+  background-color: #989898;
+  
+}
+
 #form-fill {
   background-color: blanchedalmond;
 }
@@ -58,4 +63,9 @@ code {
 
  #edit-data {
   background-color: blanchedalmond;
+ }
+
+ #search {
+  background-color: blanchedalmond;
+  margin-right: -400px;
  }

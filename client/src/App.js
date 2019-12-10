@@ -10,6 +10,8 @@ import SearchPage from "./pages/SearchPage";
 
 import DatabasePage from "./pages/DatabasePage";
 
+import JobApi from "./pages/JobApi";
+
 import EditPage from "./pages/EditPage";
 
 
@@ -26,6 +28,7 @@ function App() {
         <Route exact path="/pesa" component={SearchPage} />
         <Route exact path="/view/pesa" component={DatabasePage} />
         <Route exact path="/view/pesa/:id" component={EditPage} />
+        <Route exact path="/jobs" component={JobApi} />
       </Switch>
     </div>
   </Router>
