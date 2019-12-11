@@ -20,9 +20,13 @@ const flash = require('connect-flash');
 
 const app = express();
 
+const cors = require('cors');
+
 
 
 // view engine setup
+
+app.use(cors());
 
 app.use(logger('dev'));
 

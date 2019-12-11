@@ -2,8 +2,6 @@
 
 const pesaController = require('../controller/controller');
 
-const path = require('path');
-
 module.exports = function(app) {
     app
     .get("/api/pesa",pesaController.findAll)

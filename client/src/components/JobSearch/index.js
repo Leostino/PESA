@@ -1,30 +1,34 @@
 import React from "react";
 
-import { Form, Row, Col } from "react-bootstrap";
+import { Row, Col } from "../Grid";
 
 function JobSearch(props) {
     return(
-<Form>
-<div className="ml-5 pl-5">
   <Row>
     
-    <Col>
+    <Col size="md-4">
     
-    <label htmlFor="search" className="mt-5 font-weight-bold d-inline ml-4">Keyword</label>
+    
+    </Col>
+
+    <Col size="md-3">
+
+    <label htmlFor="search" className="mt-5 font-weight-bold border ml-2 pl-1">Jobs Keyword</label>
+
     
         <input
           value={props.search}
           onChange={props.handleInputChange}
           name="search"
           type="text"
-          className="form-control w-75 mt-5 d-inline ml-5"
+          className="form-control w-50 mt-5 d-inline border ml-4"
           placeholder="keyword"
         />
 
 
       
     </Col>
-    <Col>
+    <Col size="md-3">
         <button onClick={props.handleFormSubmit} className="btn btn-secondary mt-5 mb-3">
           Search
         </button>
@@ -32,8 +36,6 @@ function JobSearch(props) {
     </Col>
 
   </Row>
-  </div>
-</Form>
 )}
 
 export default JobSearch;

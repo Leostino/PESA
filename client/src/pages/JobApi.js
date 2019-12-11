@@ -32,8 +32,9 @@ class JobApi extends Component {
 
       API.search("web developer")
       .then(res => {
-          console.log(res);
-          this.setState({ results: res.data.message })
+          let data = res.data.listings.listing;
+          console.log(data);
+          this.setState({ results: data})
         })
       .catch(err => console.log(err));
 
@@ -71,32 +72,8 @@ class JobApi extends Component {
 
         // save what user typed in database when form submitted
 
-        API.saveJob({
-            company_name: this.state.company,
-            location: this.state.location,
-            position: this.state.position,
-            description: this.state.description,
-            application_date: this.state.date,
-            documents: this.state.documents
-
-        })
-      .then(res => {
-
-        // clear input fields after form submission
-
-          this.setState({
-            search: "",
-            company: "",
-            location: "",
-            position: "",
-            description: "",
-            date: "",
-            documents: "",
-          })
-        
-        
-        
-        })
+        API.search(this.state.search)
+      .then(res => this.setState({results: res}))
       .catch(err => console.log(err));
 
     }
@@ -131,19 +108,20 @@ class JobApi extends Component {
             </Row>
             </div> */}
             
-            <div id="search" className="ml-5 shadow mt-5 mr-5">
+            <div id="search" className="ml-5 mt-5 mr-5 mb-4">
             
             <JobSearch 
-            search={this.searchJobs}
+            search={this.state.search}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
-            />
+            />           
+            </div>
 
+            <div id="result">
             <SearchResult 
             results={this.state.results}
             saveJob={this.saveJob}
             />
-           
             </div>
 
             </div>
