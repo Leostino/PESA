@@ -11,7 +11,7 @@ function GoogleButton() {
             data-onsuccess="onSignIn"
             data-scope="https://www.googleapis.com/auth/plus.login"
             data-accesstype="offline"
-            data-redirecturi="https://pesajobs.herokuapp.com/pesa">
+            data-redirecturi="https://pesajobs.herokuapp.com/view/jobs">
         </div>
     )
 }
