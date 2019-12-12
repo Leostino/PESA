@@ -23,7 +23,14 @@ class JobApi extends Component {
 
         keyword: "",
         location: "",        
-        results: []
+        results: [],
+        company: "",
+        category: "",
+            title: "",
+            type: "",
+            link: "",
+            instruction: "",
+            post_date: ""
     }
 
     // load this after search page loads
@@ -46,7 +53,36 @@ class JobApi extends Component {
         .then(res => {
             let data = res.data.listings.listing;
             console.log(data)
-            this.setState({ results: data })
+            this.setState({results: data})
+            
+            for(let i = 0; i < this.state.data.length; i++) {
+
+
+             this.setState({
+                company: data[i].company.name,
+                category: data[i].category.name,
+                title: data[i].title,
+                type: data[i].type.name,
+                link: data[i].apply_url,
+                instruction: data[i].howto_apply,
+                post_date: data[i].post_date
+            })
+            }
+
+            console.log(this.state)
+
+        })
+    }
+
+    saveJob = () => {
+        API.saveJob({
+            company: this.state.company,
+            category: this.state.category,
+            title: this.state.title,
+            type: this.state.type,
+            link: this.state.link,
+            instruction: this.state.instruction,
+            post_date: this.state.post_date
 
         })
     }
@@ -97,27 +133,6 @@ class JobApi extends Component {
             <div id="job-page">
                 <PagesNavBar signOut={this.signOut}/>
                
-            {/* <div id="search-form" className="d-flex justify-content-between border-bottom mr-2">
-            
-            <Row>
-                <Col size="md-2">
-                <Logo image={logoImage[0].image} name={logoImage[0].name} />
-                </Col>
-            </Row>
-            <Row className="ml-5">
-                <Col size="md-12">
-                <SearchForm 
-               search={this.state.search}
-                // location={this.state.location}
-                onChange={this.handleInputChange}
-               onClick={this.handleFormSubmit}
-                />
-                
-              </Col>
-              
-                
-            </Row>
-            </div> */}
             
             <div id="search" className="ml-5 mt-5 mr-5 mb-4">
             

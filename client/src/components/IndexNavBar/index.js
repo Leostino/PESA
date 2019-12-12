@@ -17,22 +17,9 @@ function IndexNavBar () {
     
   return (
   
-    <Navbar bg="light" expand="lg" className="sticky-top">
+    <Navbar bg="light" expand="lg" className="sticky-top d-flex justify-content-between">
       <Logo image={logoImage[0].image} name={logoImage[0].name} />
-      <Navbar.Toggle aria-controls="basic-navbar-nav" />
-      <Navbar.Collapse id="basic-navbar-nav">
-        <Nav className="mr-auto ml-5">
-          <Nav.Link href="#home">Home</Nav.Link>
-          <Nav.Link href="#link">Pesa</Nav.Link>
-          <NavDropdown title="Profile" id="basic-nav-dropdown">
-          <NavDropdown.Item href="#action/3.1">Profile</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.2">Manage Accounts</NavDropdown.Item>
-          <NavDropdown.Item href="#action/3.3">Favorites</NavDropdown.Item>
-          <NavDropdown.Divider />
-          </NavDropdown>
-        </Nav>
         <GoogleButton />
-      </Navbar.Collapse>
     </Navbar>
   );
 }
