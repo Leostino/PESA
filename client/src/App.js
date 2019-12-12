@@ -28,7 +28,7 @@ function App() {
         <Route exact path="/pesa" component={SearchPage} />
         <Route exact path="/view/pesa" component={DatabasePage} />
         <Route exact path="/view/pesa/:id" component={EditPage} />
-        <Route exact path="/jobs" component={JobApi} />
+        <Route exact path="/view/jobs" component={JobApi} />
       </Switch>
     </div>
   </Router>

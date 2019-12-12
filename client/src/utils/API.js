@@ -36,11 +36,11 @@ export default {
 
   // query job api for jobs
 
-  search: function(search) {
+  search: function(search, location) {
 
     const api_key = "72423555f215d5d8c1fbe985a57e35bd";
 
-    const endPoint = "https://cors-anywhere.herokuapp.com/https://authenticjobs.com/api/?api_key="+ api_key +"&method=aj.jobs.search&keywords="+ search +"&perpage=3&format=json"
+    const endPoint = "https://cors-anywhere.herokuapp.com/https://authenticjobs.com/api/?api_key="+ api_key +"&method=aj.jobs.search&keywords="+ search +"&perpage=10&location="+ location +"&format=json"
 
     return axios.get(endPoint)
   }

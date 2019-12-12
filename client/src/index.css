@@ -69,3 +69,7 @@ code {
   background-color: blanchedalmond;
   /* margin-right: 400px; */
  }
+
+ .list-group-item {
+   width: 70em;
+ }

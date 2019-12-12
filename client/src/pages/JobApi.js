@@ -2,7 +2,7 @@
 
 import React, { Component } from "react";
 
-// import FormFill from "../components/FormFill"
+import Container from "../components/Grid";
 
 import JobSearch from "../components/JobSearch";
 
@@ -21,8 +21,8 @@ class JobApi extends Component {
 
     state = {
 
-        search: "",
-        
+        keyword: "",
+        location: "",        
         results: []
     }
 
@@ -30,14 +30,25 @@ class JobApi extends Component {
 
     componentDidMount() {
 
-      API.search("web developer")
+      API.search("web developer", "")
       .then(res => {
           let data = res.data.listings.listing;
-          console.log(data);
-          this.setState({ results: data})
+          console.log(data)
+        this.setState({ results: data })
+                    
         })
       .catch(err => console.log(err));
 
+    }
+
+    search = (keyword, location) => {
+        API.search(keyword, location)
+        .then(res => {
+            let data = res.data.listings.listing;
+            console.log(data)
+            this.setState({ results: data })
+
+        })
     }
 
 
@@ -72,9 +83,9 @@ class JobApi extends Component {
 
         // save what user typed in database when form submitted
 
-        API.search(this.state.search)
-      .then(res => this.setState({results: res}))
-      .catch(err => console.log(err));
+        this.search(this.state.keyword, this.state.location)
+    //   .then(res => this.setState({results: res}))
+    //   .catch(err => console.log(err));
 
     }
 
@@ -111,13 +122,15 @@ class JobApi extends Component {
             <div id="search" className="ml-5 mt-5 mr-5 mb-4">
             
             <JobSearch 
-            search={this.state.search}
+            keyword={this.state.keyword}
+            location={this.state.location}
             handleInputChange={this.handleInputChange}
             handleFormSubmit={this.handleFormSubmit}
             />           
             </div>
 
-            <div id="result">
+            
+            <div id="result" className="container">
             <SearchResult 
             results={this.state.results}
             saveJob={this.saveJob}

@@ -2,32 +2,41 @@
 
 import React from "react";
 
-import { Link } from "react-router-dom"
+import Container from "../Grid";
+
+import { Link } from "react-router-dom";
 
 
 // component for database page
 
 function SearchResult(props) {
   return (
-    <ul className="list-group">
+
+    <ul className="list-group d-flex align-items-center">
       {props.results.map(result => (
-        <li key={result._id} className="list-group-item card-body font-weight-bold mt-3 mb-3">
-          <p>COMPANY: {result.company.name}</p>
-          <p>LOCATION: {result.company.name} </p>
-          <p>POSITION: {result.category.name} </p>
-          {/* <p>JOB DESCRIPTION: {result.description} </p> */}
-          <p>POST DATE: {result.post_date} </p>
-          <p>DOCUMENT: {result.documents} </p>
+        <li key={result.id} className="list-group-item card-body font-weight-bold mt-3 mb-3">
+          <p><b>COMPANY:</b>  {result.company.name}</p>
+          {/* <p><b>LOCATION:</b>  {result.company.location.name}  </p> */}
+          <p><b>CATEGORY:</b>  {result.category.name} </p>
+          <p><b>POSITION:</b>  {result.title}</p>
+          <p><b>TYPE:</b>  {result.type.name}</p>
+          <p><b>APPLY HERE:</b>  <a href={result.apply_url} target="_blank">{result.apply_url}</a></p>
+          <p><b>HOW TO APPLY:</b>  {result.howto_apply}</p>          
+          {/* <p><b>JOB DESCRIPTION:</b> {result.description} </p> */}
+          <p><b>POST DATE & TIME:</b>  {result.post_date} </p>
+          {/* <p>DOCUMENT:  {result.documents} </p> */}
 
          
-             
-          {/* delete button */}
-          <button className="card-button btn btn-secondary ml-3" key={result._id} onClick={() => props.saveJob(result._id)}>
+         <div className="text-center">             
+          {/* save button */}
+          <button className="card-button btn btn-secondary" key={result.id} onClick={() => props.saveJob(result.id)}>
             Save Job
           </button>
+          </div>
         </li>
       ))}
     </ul>
+
   );
 }
 
