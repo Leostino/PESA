@@ -29,9 +29,9 @@ function SearchResult(props) {
          
          <div className="text-center">             
           {/* save button */}
-          <button className="card-button btn btn-secondary" key={result.id} onClick={() => props.saveJob}>
+          {/* <button className="card-button btn btn-secondary" key={result.id} onClick={() => props.saveJob(result.id)}>
             Save Job
-          </button>
+          </button> */}
           </div>
         </li>
       ))}

@@ -105,44 +105,23 @@ class SearchPage extends Component {
     render () {
         return (        
             <div id="search-page">
+                
                 <PagesNavBar signOut={this.signOut}/>
-               
-            {/* <div id="search-form" className="d-flex justify-content-between border-bottom mr-2">
             
-            <Row>
-                <Col size="md-2">
-                <Logo image={logoImage[0].image} name={logoImage[0].name} />
-                </Col>
-            </Row>
-            <Row className="ml-5">
-                <Col size="md-12">
-                <SearchForm 
-               search={this.state.search}
-                // location={this.state.location}
-                onChange={this.handleInputChange}
-               onClick={this.handleFormSubmit}
-                />
-                
-              </Col>
-              
-                
-            </Row>
-            </div> */}
+                <div id="form-fill" className="ml-5 shadow mt-5 mr-5">
             
-            <div id="form-fill" className="ml-5 shadow mt-5 mr-5">
-            
-            <FormFill 
-            company={this.state.company}
-            location={this.state.location}
-            position={this.state.position}
-            description={this.state.description}
-            date={this.state.date}
-            documents={this.state.documents}
-            handleInputChange={this.handleInputChange}
-            handleFormSubmit={this.handleFormSubmit}
-            />
+                   <FormFill 
+                     company={this.state.company}
+                     location={this.state.location}            
+                     position={this.state.position}
+                     description={this.state.description}
+                     date={this.state.date}
+                     documents={this.state.documents}
+                     handleInputChange={this.handleInputChange}
+                     handleFormSubmit={this.handleFormSubmit}
+                    />
            
-            </div>
+                </div>
 
             </div>
         

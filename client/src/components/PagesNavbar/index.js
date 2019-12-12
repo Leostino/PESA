@@ -20,12 +20,13 @@ function PagesNavBar (props) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="mr-auto ml-5">
-                <Nav.Link href="#home">Home</Nav.Link>
-                <Nav.Link href="#link">Pesa</Nav.Link>
-                <NavDropdown title="Profile" id="basic-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Manage Account</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Profile</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Favorites</NavDropdown.Item>
+                <Nav.Link className="ml-5 mr-2" href="/view/jobs">Home</Nav.Link>
+                <Nav.Link className="ml-5 mr-2" href="/view/pesa">Saved Jobs</Nav.Link>
+                <Nav.Link className="ml-5 mr-2" href="/pesa">Add Jobs</Nav.Link>
+                <NavDropdown className="ml-5 mr-2" title="|||||" id="basic-nav-dropdown">
+                <NavDropdown.Item href="/view/jobs">Search For Jobs</NavDropdown.Item>
+                <NavDropdown.Item href="/view/pesa">Saved Jobs</NavDropdown.Item>
+                <NavDropdown.Item href="/pesa">Add Jobs</NavDropdown.Item>
                 <NavDropdown.Divider />
                 </NavDropdown>
             </Nav>

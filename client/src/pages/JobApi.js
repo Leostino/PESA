@@ -24,6 +24,8 @@ class JobApi extends Component {
         keyword: "",
         location: "",        
         results: [],
+        jobs:[],
+          id:"",
         company: "",
         category: "",
             title: "",
@@ -40,7 +42,7 @@ class JobApi extends Component {
       API.search("web developer", "")
       .then(res => {
           let data = res.data.listings.listing;
-          console.log(data)
+        //   console.log(data)
         this.setState({ results: data })
                     
         })
@@ -51,30 +53,36 @@ class JobApi extends Component {
     search = (keyword, location) => {
         API.search(keyword, location)
         .then(res => {
-            let data = res.data.listings.listing;
-            console.log(data)
-            this.setState({results: data})
+            //console.log(res)
+            this.setState({results: res.data.listings.listing})
+
+             console.log(this.state.results)
+
+
+            const jobs = this.state.results.map(listing => {
+                
+                this.setState({
+                             id: listing.id,
+                        company: listing.company.name,
+                        category: listing.category.name,
+                        title: listing.title,
+                        type: listing.type.name,
+                        link: listing.apply_url,
+                        instruction: listing.howto_apply,
+                        post_date: listing.post_date
+                    
+                    })
+
+                    console.log(this.state.company)
             
-            for(let i = 0; i < this.state.data.length; i++) {
-
-
-             this.setState({
-                company: data[i].company.name,
-                category: data[i].category.name,
-                title: data[i].title,
-                type: data[i].type.name,
-                link: data[i].apply_url,
-                instruction: data[i].howto_apply,
-                post_date: data[i].post_date
-            })
-            }
-
-            console.log(this.state)
+            });
 
         })
     }
 
-    saveJob = () => {
+
+
+    saveJob = (id) => {
         API.saveJob({
             company: this.state.company,
             category: this.state.category,
@@ -149,6 +157,7 @@ class JobApi extends Component {
             <SearchResult 
             results={this.state.results}
             saveJob={this.saveJob}
+            key={this.state.id}
             />
             </div>
 
