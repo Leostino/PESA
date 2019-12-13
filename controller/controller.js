@@ -20,6 +20,7 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   create: function(req, res) {
+    console.log("creating", req.body)
     Pesa
       .create(req.body)
       .then(dbModel => {

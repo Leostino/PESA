@@ -24,8 +24,7 @@ class JobApi extends Component {
         keyword: "",
         location: "",        
         results: [],
-        jobs:[],
-          id:"",
+        id:"",
         company: "",
         category: "",
             title: "",
@@ -53,29 +52,12 @@ class JobApi extends Component {
     search = (keyword, location) => {
         API.search(keyword, location)
         .then(res => {
-            //console.log(res)
+            console.log(res)
             this.setState({results: res.data.listings.listing})
 
-             console.log(this.state.results)
 
 
-            const jobs = this.state.results.map(listing => {
-                
-                this.setState({
-                             id: listing.id,
-                        company: listing.company.name,
-                        category: listing.category.name,
-                        title: listing.title,
-                        type: listing.type.name,
-                        link: listing.apply_url,
-                        instruction: listing.howto_apply,
-                        post_date: listing.post_date
-                    
-                    })
-
-                    console.log(this.state.company)
             
-            });
 
         })
     }
@@ -83,16 +65,33 @@ class JobApi extends Component {
 
 
     saveJob = (id) => {
-        API.saveJob({
-            company: this.state.company,
-            category: this.state.category,
-            title: this.state.title,
-            type: this.state.type,
-            link: this.state.link,
-            instruction: this.state.instruction,
-            post_date: this.state.post_date
+        if (this.state.results.indexOf(id) === -1){
+            console.log("if1 " + id);
+            console.log(this.state.results.indexOf(id));
+            for (let i = 0; i < this.state.results.length; i++) {
 
-        })
+                if(this.state.results[i].id === id) {
+
+                console.log(this.state.results[i].company.name);
+                
+
+                API.saveJob({
+                    company: this.state.results[i].company.name,
+                    category: this.state.results[i].category.name,
+                    title: this.state.results[i].title,
+                    type: this.state.results[i].type.name,
+                    link: this.state.results[i].apply_url,
+                    instruction: this.state.results[i].howto_apply,
+                    post_date: this.state.results[i].post_date
+        
+                }).then(console.log("Done with job book call"))
+                //    .catch(err => console.log(err));
+
+            }
+        }
+         
+        
+    }
     }
 
 
@@ -157,7 +156,6 @@ class JobApi extends Component {
             <SearchResult 
             results={this.state.results}
             saveJob={this.saveJob}
-            key={this.state.id}
             />
             </div>
 
