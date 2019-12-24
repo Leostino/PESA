@@ -13,10 +13,10 @@ function DatabaseData(props) {
       {props.results.map(result => (
         <li key={result._id} className="list-group-item card-body font-weight-bold mt-3 mb-3">
           <p>COMPANY: {result.company_name}</p>
-          <p>LOCATION: {result.location} </p>
-          <p>POSITION: {result.position} </p>
-          <p>JOB DESCRIPTION: {result.description} </p>
-          <p>APPLICATION DATE: {result.application_date} </p>
+          <p>LOCATION: {result.location}</p>
+          <p>POSITION: {result.position}</p>
+          <p>JOB DESCRIPTION: {result.description}</p>
+          <p>APPLICATION DATE: {result.application_date}</p>
           <p>DOCUMENT: {result.documents} </p>
 
           {/* edit button */}

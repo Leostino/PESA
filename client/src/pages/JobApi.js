@@ -17,7 +17,9 @@ import API from "../utils/API"
 
 class JobApi extends Component {
 
+
     // state obj for input fields on search page
+    
 
     state = {
 
@@ -38,26 +40,28 @@ class JobApi extends Component {
 
     componentDidMount() {
 
-      API.search("web developer", "")
+      API.search({
+          keyword: "web developer",
+          location: ""
+      })
       .then(res => {
-          let data = res.data.listings.listing;
-        //   console.log(data)
-        this.setState({ results: data })
+          
+         this.setState({ results: res.data })
                     
         })
       .catch(err => console.log(err));
 
     }
 
-    search = (keyword, location) => {
-        API.search(keyword, location)
+
+    // job search method, call to backend job api
+
+    search = jobObj => {
+
+        API.search(jobObj)
         .then(res => {
-            console.log(res)
-            this.setState({results: res.data.listings.listing})
-
-
-
-            
+           
+            this.setState({ results: res.data })            
 
         })
     }
@@ -125,10 +129,14 @@ class JobApi extends Component {
 
 
         // save what user typed in database when form submitted
+        const jobObj = {
 
-        this.search(this.state.keyword, this.state.location)
-    //   .then(res => this.setState({results: res}))
-    //   .catch(err => console.log(err));
+            keyword: this.state.keyword,
+            location: this.state.location
+            
+        }
+
+        this.search(jobObj)
 
     }
 
